@@ -1,0 +1,181 @@
+.grid::before {
+  background: linear-gradient(to right, transparent 15px, rgba(40, 60, 191, 0.2) 15px, rgba(40, 60, 191, 0.2) 82.5px, transparent 82.5px), linear-gradient(to bottom, transparent 23px, rgba(0, 0, 0, 0.3) 23px);
+  background-size: 97.5px 1px, 1px 24px;
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 15px;
+  width: 1170px;
+  height: 100%;
+  z-index: 1000;
+}
+
+.lg-col-1 {
+  width: 67.5px;
+}
+
+.lg-col-2 {
+  width: 165px;
+}
+
+.lg-col-3 {
+  width: 262.5px;
+}
+
+.lg-col-4 {
+  width: 360px;
+}
+
+.lg-col-5 {
+  width: 457.5px;
+}
+
+.lg-col-6 {
+  width: 555px;
+}
+
+.lg-col-7 {
+  width: 652.5px;
+}
+
+.lg-col-8 {
+  width: 750px;
+}
+
+.lg-col-9 {
+  width: 847.5px;
+}
+
+.lg-col-10 {
+  width: 945px;
+}
+
+.lg-col-11 {
+  width: 1042.5px;
+}
+
+.lg-col-12 {
+  width: 1140px;
+}
+
+.lg-push-1 {
+  margin-left: 112.5px;
+}
+
+.lg-push-2 {
+  margin-left: 210px;
+}
+
+.lg-push-3 {
+  margin-left: 307.5px;
+}
+
+.lg-push-4 {
+  margin-left: 405px;
+}
+
+.lg-push-5 {
+  margin-left: 502.5px;
+}
+
+.lg-push-6 {
+  margin-left: 600px;
+}
+
+.lg-push-7 {
+  margin-left: 697.5px;
+}
+
+.lg-push-8 {
+  margin-left: 795px;
+}
+
+.lg-push-9 {
+  margin-left: 892.5px;
+}
+
+.lg-push-10 {
+  margin-left: 990px;
+}
+
+.lg-push-11 {
+  margin-left: 1087.5px;
+}
+
+.lg-push-12 {
+  margin-left: 1185px;
+}
+
+.gridcon {
+  width: 1170px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+body, h1, h2, p {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  position: relative;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.call04 {
+  width: 1200px;
+  height: 700px;
+  background: url(images/img-call04.png);
+  position: relative;
+}
+.call04::before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 0;
+}
+
+.gridcon {
+  position: relative;
+  z-index: 1;
+}
+
+.call04-heading {
+  padding-top: 200px;
+  font-size: 36px;
+  font-weight: bold;
+  color: #242526;
+}
+
+.call04-brief {
+  padding-top: 10px;
+  padding-bottom: 30px;
+  width: 330px;
+  font-size: 14px;
+  color: #747474;
+}
+
+.call04-form input, .call04-form button {
+  margin-top: 10px;
+  width: 225px;
+  height: 42px;
+}
+.call04-form input {
+  box-sizing: border-box;
+  padding-left: 10px;
+  border: 0;
+  background-color: rgba(182, 193, 204, 0.2);
+}
+.call04-form button {
+  border-radius: 4px;
+  border: 0;
+  background-color: #1b8bf9;
+  color: white;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,84 @@
+
+$fixed-width: true !default;
+
+$tot-width: 1300px !default;
+$main-width: 960px !default;
+$col-count: 12 !default;
+$gut-width: 10px !default;
+
+$media-prefix: "lg" !default;
+$line-height: 24px !default;
+$grid-color: rgba(40,60,191,0.2);
+
+@function con-width() {
+  @return ($main-width / $col-count) - (2 * $gut-width);
+}
+
+@mixin columns() {
+  $con-width: con-width();
+
+  @debug $con-width;
+
+  @for $i from 1 through $col-count {
+    $res-width: $con-width * $i + $gut-width * 2 * ($i - 1);
+
+    .#{$media-prefix}-col-#{$i} {
+      @if $fixed-width {
+        width: $res-width;
+      }
+      @else{
+        width: percentage($res-width / $main-width);
+      }
+    }
+  } // @for
+}
+
+@mixin pushs() {
+  @for $i from 1 through $col-count {
+    $res-margin: ($main-width / $col-count) * $i + $gut-width;
+
+    .#{$media-prefix}-push-#{$i} {
+      @if $fixed-width {
+        margin-left: $res-margin;
+      }
+      @else {
+        margin-left: percentage($res-margin / $main-width);
+      }
+    }
+  } // @for
+}
+
+@mixin grid() {
+  $con-width: con-width();
+  $grid-left: ($tot-width - $main-width) / 2;
+  @debug $con-width, $grid-left;
+
+  .grid::before {
+    @if $fixed-width {
+      background:
+        linear-gradient(to right, transparent $gut-width,
+                                  $grid-color $gut-width,
+                                  $grid-color $gut-width + $con-width,
+                                  transparent $gut-width + $con-width ),
+        linear-gradient(to bottom, transparent $line-height - 1,
+                                   rgba(0,0,0,0.3) $line-height - 1);
+      background-size: $con-width + 2 * $gut-width 1px, 1px $line-height;
+    }
+    @else {
+      // $gut-ratio: percentage($gut-width / $)
+    }
+    position: absolute;
+    content: '';
+    top: 0;
+    left: $grid-left;
+    width: $main-width;
+    height: 100%;
+    z-index: 1000;
+  }
+}
+//
+// .grid {
+//   background: linear-gradient(to right,rgba(20,60,120,0.3) 90%,transparent 90%),
+//   linear-gradient(180deg, transparent 23px, black 23px );
+//   background-size: 100px 24px;
+// }
