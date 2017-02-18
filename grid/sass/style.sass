@@ -1,0 +1,504 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css)
+@import "common-modules"
+@import "grid-guide"
+@import "grid-sys"
+@import "mixins"
+
+$min-md: 760px
+$min-lg: 960px
+
+body
+  font-family: 'Nanum Gothic', sans-serif
+  font-size: 16px
+  line-height: 1.5
+
+body, h1, h2, h3, ul, dl, dd
+  margin: 0
+  padding: 0
+
+ul
+  list-style: none
+
+.hidden
+  position: absolute
+  left: -9999em
+
+// $max-width: 1300px
++grid-common()
+
+$line-height: 24px
+
+$main-color: #f3987b
+$header-bgcolor: #4d4b4a
+$menu-nor-bgcolor: #413e3d
+$menu-act-bgcolor: #4d4b4a
+
+$intro-bgcolor: #f8d2c5
+
+$pager-tot-color: #fbbe9a
+
+$contact-input-bdcolor: #dadee8
+$contact-btn-bgcolor: #4d4b4a
+
+$footer-bgcolor: #d6d2d1
+$footer-color: #4d4b4a
+
+.header
+  background-color: $header-bgcolor
+  height: 96px
+  .logo
+    padding-top: 28px
+    padding-left: 30px
+    float: left
+    color: $main-color
+    font-size: 24px
+    i
+      font-size: 36px
+  .gnb
+    @extend %set-nav
+    float: right
+
+.intro
+  position: relative
+  background-color: $intro-bgcolor
+.intro-video
+  background: url(images/img-video.png) center no-repeat
+  background-size: cover
+  width: 100%
+  height: 100% 
+.intro-btn-prev, .intro-btn-next
+  @include irbutton(33px, 106px)
+  position: absolute
+.intro-btn-prev
+  background: url(images/icon-arrow-left.png)
+.intro-btn-next
+  background: url(images/icon-arrow-right.png)
+
+@mixin line-heading($width, $height, $line-width, $thickness)
+  width: $width
+  height: $height
+  line-height: $height
+  &::before, &::after
+    width: $line-width
+    height: $thickness
+    content: ''
+    display: block
+    margin-top: $height / 2 - 1
+    background-color: black
+  &::before
+    float: left
+  &::after
+    float: right
+
+.book
+  text-align: center
+.book-heading
+  padding: 0 10px
+  font-size: 25px
+
+.book-item
+  width: 100%
+  margin-bottom: 24px
+  position: relative
+  text-align: left
+
+.book-title
+  color: #dadee8
+  font-size: 20px
+  width: 100%
+
+.book-img
+  position: absolute
+  top: 0
+  overflow: hidden
+  img
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+.gallery
+  position: relative
+
+.gallery-panel
+  @include center-img(100%, auto)
+
+.gallery-btn-prev, .gallery-btn-next
+  @include irbutton(27px, 86px)
+  position: absolute
+
+.gallery-btn-prev
+  background: url(images/icon-arrow-left-white.png)
+.gallery-btn-next
+  background: url(images/icon-arrow-right-white.png)
+
+@mixin gallery-indicators($width)
+  position: absolute
+  left: 50%
+  transform: translateX(-50%)
+  bottom: $line-height
+  width: $width
+  height: $line-height
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+.author
+  text-align: center
+.author-heading
+  padding: 0 10px
+  font-size: 25px
+
+// card
+// image: left side, name and brief: right side
+@mixin author-card0($height, $img-width, $img-height, $name-left, $name-top, $brief-top)
+  position: relative
+  height: $height
+  text-align: left
+  .author-name
+    position: absolute
+    left: $name-left
+    top: $name-top
+    font-size: 20px
+  .author-img
+    @include center-img($img-width, $img-height)
+    top: 50%
+    transform: translateY(-50%)
+    border-radius: 50%
+  .author-brief
+    position: absolute
+    left: $name-left
+    top: $brief-top
+
+
+.map-panel
+  @include center-img(100%, $line-height * 15)
+.map-marker
+  @include irelem(58px, 87px, url(images/icon-marker.png))
+  position: absolute
+  top: 118px
+  left: 778px
+
+
+.contact
+
+.contact-heading
+  padding: 0 10px
+  text-align: center
+
+.contact-name>input, .contact-email>input
+  box-sizing: border-box
+  width: 100%
+  height: $line-height * 2
+  text-indent: 1rem
+  margin-bottom: $line-height
+  font-size: 16px
+  border: 1px solid $contact-input-bdcolor
+  border-radius: 4px
+
+.contact-msg>textarea
+  box-sizing: border-box
+  width: 100%
+  height: $line-height * 10
+  resize: none
+  margin-bottom: $line-height
+  vertical-align: top
+  text-indent: 1rem
+  padding-top: $line-height
+  font-size: 16px
+  border: 1px solid $contact-input-bdcolor
+  border-radius: 4px
+
+.contact-btn>button
+  width: 100%
+  height: $line-height * 3
+  margin-bottom: $line-height * 2
+  font-size: 16px
+  background-color: $contact-btn-bgcolor
+  color: white
+  border: 0
+  border-radius: 4px
+
+.footer
+  text-align: center
+  height: $line-height * 3
+  line-height: $line-height * 3
+  background-color: $footer-bgcolor
+  color: $footer-color
+
+.footer-heading
+  font-size: 16px
+
+// $col-count: 4,
+// $main-margin: 20px,
+// $gut-width: 10px,
+// $grid-color: rgba(64,64,192,0.2),
+// $line-height: 24px,
+// $line-color: rgba(0,0,0,0.3))
+
+// $col-count: 4,
+// $main-margin: 20px,
+// $gut-width: 10px
+// $media-prefix: "sm"
+
+// mobile
+@media screen and (max-width: $min-md - 1)
+  $grid-color: rgba(192,64,64,0.2)
+  $line-color: rgba(0,0,0,0.3)
+  +grid-guide(4, 20px, 10px, $grid-color, 24px, $line-color)
+  +grid-sys(4, 20px, 10px, "sm")
+
+  .header
+    .gnb
+      background: url(images/icon-menu.png) no-repeat
+      width: 31px
+      height: 26px
+      margin-top: 34px
+      margin-right: 30px
+      li
+        display: none
+
+  .intro
+    height: 288px
+  .intro-btn-prev, .intro-btn-next
+    top: 100px
+  .intro-btn-prev
+    left: 30px
+  .intro-btn-next
+    right: 30px
+
+  .book-heading
+    @include line-heading(auto, $line-height * 4, 15%, 1px)
+
+  .book-item
+    height: 264px
+
+  .book-title
+    position: absolute
+    bottom: 0
+    left: 0
+    line-height: 48px
+    text-indent: 1rem
+    background: rgba(0,0,0,0.2)
+
+  .book-img
+    width: 100%
+    height: 216px
+
+  .book-brief
+    display: none
+
+  .gallery-panel
+    height: $line-height * 12
+
+  .gallery-btn-prev, .gallery-btn-next
+    top: 100px
+  .gallery-btn-prev
+    left: 30px
+  .gallery-btn-next
+    right: 30px
+
+  .gallery-pager
+    position: absolute
+    top: $line-height
+    right: 30px
+    li
+      float: left
+  .gallery-pager-total
+    color: $pager-tot-color
+    &::before
+      content: ' / '
+      padding-left: 5px
+  .gallery-pager-current
+    color: white
+
+  .gallery-indicators
+    display: none
+
+  .author-heading
+    @include line-heading(auto, $line-height * 4, 16%, 1px)
+
+  .author-card
+    @include author-card0($line-height * 5, 104px, 104px, 34%, $line-height - 2, $line-height * 2)
+    margin-bottom: $line-height
+
+  .contact-heading
+    @include line-heading(auto, $line-height * 4, 25%, 1px)
+
+@media screen and (min-width: $min-md ) and (max-width: $min-lg - 1)
+  $grid-color: rgba(64,192,64,0.2)
+  $line-color: rgba(0,0,0,0.3)
+  +grid-guide(8, 20px, 10px, $grid-color, 24px, $line-color)
+  +grid-sys(8, 20px, 10px, "md")
+
+  .header
+    .gnb
+      background: url(images/icon-menu.png) no-repeat
+      width: 31px
+      height: 26px
+      margin-top: 34px
+      margin-right: 30px
+      li
+        display: none
+
+  .intro
+    height: 408px
+  .intro-btn-prev, .intro-btn-next
+    top: 136px
+  .intro-btn-prev
+    left: 30px
+  .intro-btn-next
+    right: 30px
+
+  .book-heading
+    @include line-heading(auto, $line-height * 4, 25%, 1px)
+    margin-top: 24px
+  
+  .row>div
+    .book-item
+      height: $line-height * 15
+      .book-img
+        width: 100%
+        height: $line-height * 9
+      .book-title
+        padding-top: $line-height * 10 - 4
+      .book-brief
+        height: $line-height * 4
+        overflow: hidden
+
+    &:first-child
+      .book-item
+        height: $line-height * 19
+        .book-img
+          height: $line-height * 13
+        .book-title
+          padding-top: $line-height * 14 - 4
+
+  .gallery-panel
+    height: $line-height * 14
+
+  .gallery-btn-prev, .gallery-btn-next
+    top: 124px
+  .gallery-btn-prev
+    left: 30px
+  .gallery-btn-next
+    right: 30px
+
+  .gallery-pager
+    display: none
+
+  .gallery-indicators
+    @include gallery-indicators(20%)
+    li 
+      @include irelem(15px, 15px)
+      background-image: url(images/btn-indicator-nor.png)
+      &:hover
+        background-image: url(images/btn-indicator-act.png)
+
+  .author-heading
+    @include line-heading(auto, $line-height * 4, 25%, 1px)
+    margin-top: 24px
+
+  .author-card
+    position: relative
+    height: $line-height * 11
+    text-align: center
+    margin-bottom: $line-height
+  .author-name
+    padding-top: $line-height * 8 - 2
+    font-size: 20px
+  .author-img
+    @include center-img(168px, 168px)
+    position: absolute
+    top: 0
+    left: 50%
+    transform: translateX(-50%)
+  .author-brief
+    height: $line-height * 2
+
+  .contact-heading
+    @include line-heading(auto, $line-height * 4, 25%, 1px)
+    margin-top: 24px
+
+@media screen and (min-width: $min-lg)
+  $grid-color: rgba(64,64,192,0.2)
+  $line-color: rgba(0,0,0,0.3)
+  +grid-guide(12, 10px, 10px, $grid-color, 24px, $line-color)
+  +grid-sys(12, 10px, 10px, "lg")
+
+  .header
+    height: 120px
+    .logo
+      padding-top: 37px
+    .gnb
+      padding-top: 47px
+      li
+        float: left
+        a
+          padding: 0 32px
+          color: white
+          letter-spacing: 1.6px
+          &:hover
+            color: $main-color
+
+  .intro
+    height: 408px
+  .intro-btn-prev, .intro-btn-next
+    top: 136px
+  .intro-btn-prev
+    left: 30px
+  .intro-btn-next
+    right: 30px
+
+  .book-heading
+    @include line-heading(auto, $line-height * 4, 30%, 1px)
+    margin-top: 24px
+
+  .book-item
+    height: $line-height * 15
+    .book-img
+      width: 100%
+      height: $line-height * 9
+    .book-title
+      padding-top: $line-height * 10 - 4
+    .book-brief
+      height: $line-height * 4
+      overflow: hidden
+
+  .gallery-panel
+    height: $line-height * 14
+
+  .gallery-btn-prev, .gallery-btn-next
+    top: 124px
+  .gallery-btn-prev
+    left: 30px
+  .gallery-btn-next
+    right: 30px
+
+  .gallery-pager
+    display: none
+
+  .gallery-indicators
+    @include gallery-indicators(16%)
+    li 
+      @include irelem(15px, 15px)
+      background-image: url(images/btn-indicator-nor.png)
+      &:hover
+        background-image: url(images/btn-indicator-act.png)
+
+  .author-heading
+    @include line-heading(auto, $line-height * 4, 30%, 1px)
+    margin-top: 24px
+
+  .author-card
+    @include author-card0($line-height * 5, 104px, 104px, 35%, $line-height - 2, $line-height * 2)
+    margin-bottom: $line-height * 2
+    .author-img
+      left: 20px
+
+  .contact-heading
+    @include line-heading(auto, $line-height * 4, 34%, 1px)
+    margin-top: 24px
+
+  .contact-msg>textarea
+    margin-bottom: $line-height * 2

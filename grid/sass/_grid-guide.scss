@@ -1,0 +1,38 @@
+/// grid
+
+@mixin grid-guide( $col-count: 4,
+                   $main-margin: 20px,
+                   $gut-width: 10px,
+                   $grid-color: rgba(64,64,192,0.2),
+                   $line-height: 24px,
+                   $line-color: rgba(0,0,0,0.3)) {
+
+  $cell-ratio: percentage(1 / $col-count);
+  
+  .grid {
+    position: relative;
+  }
+
+  .grid::before {
+    background-image:
+      repeating-linear-gradient(to right,
+                                transparent, transparent $gut-width,
+                                $grid-color $gut-width, $grid-color ($cell-ratio / 2),
+                                transparent ($cell-ratio / 2), transparent $cell-ratio ),
+      repeating-linear-gradient(to left,
+                                transparent, transparent $gut-width,
+                                $grid-color $gut-width, $grid-color ($cell-ratio / 2),
+                                transparent ($cell-ratio / 2), transparent $cell-ratio ),
+
+      linear-gradient(to bottom, transparent $line-height - 1, $line-color $line-height - 1);
+
+    background-size: 100% 1px, 100% 1px, 1px $line-height;
+    position: absolute;
+    content: '';
+    left: $main-margin;
+    right: $main-margin;
+    height: 100%;
+    z-index: 1000;
+  }
+}
+

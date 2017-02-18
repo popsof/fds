@@ -1,0 +1,31 @@
+
+@mixin irelem($width, $height, $url: null) {
+  width: $width;
+  height: $height;
+  background-image: $url;
+  text-indent: $width;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@mixin irbutton($width, $height, $url: null) {
+  @include irelem($width, $height, $url);
+  border: 0;
+  cursor: pointer;
+  &:active {
+    transform: translate(1px, 1px);
+  }
+}
+
+@mixin center-img($width, $height) {
+  position: relative;
+  width: $width;
+  height: $height;
+  overflow: hidden;
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

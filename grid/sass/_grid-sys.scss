@@ -1,0 +1,63 @@
+// grid-common
+
+@mixin grid-common( $max-width: 1300px )
+{
+  .main {
+    width: 100%;
+    max-width: $max-width;
+    margin: 0 auto;
+  }
+
+  .container {
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .row::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  [class*="-col-"] {
+    box-sizing: border-box;
+    float: left;
+  }
+
+  [class*="-push-"] {
+    position: relative;
+  }
+}
+
+// grid-sys
+
+// $col-count: 4,
+// $main-margin: 20px
+// $gut-width: 10px
+// $media-prefix: "sm"
+
+@mixin grid-sys( $col-count: 4,
+                 $main-margin: 20px,
+                 $gut-width: 10px,
+                 $media-prefix: "sm" )
+{
+  .container {
+    padding: 0 $main-margin;
+  }
+  [class*="#{$media-prefix}-col-"] {
+    padding: 0 $gut-width;
+  }
+
+  @for $i from 1 through $col-count {
+    .#{$media-prefix}-col-#{$i} {
+      width: percentage($i / $col-count);
+    }
+  }
+
+  @for $i from 1 through $col-count {
+    .#{$media-prefix}-push-#{$i} {
+      left: percentage($i / $col-count);
+    }
+  }
+
+}
